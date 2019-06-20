@@ -76,11 +76,18 @@
 
 			function handleBoxClick() {
 				// TODO 4 / 5
-				points += 1; // increase the point total
-				box.text(points); // update the new points total displayed by the box
-				position = 0; // reset the position of the box to 0
+				points += 1; 
+				box.text(points); 
+				
 				speed += 3;
-
+				
+				randomlyPositionBox();
+			};
+			
+			function randomlyPositionBox() {
+				var randNum = Math.random() * boardWidth;
+				console.log(randNum);
+				position = randNum;
 			}
 
 
