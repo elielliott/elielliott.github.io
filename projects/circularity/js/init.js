@@ -24,17 +24,17 @@ var init = function (window) {
         var circles = [];
         
         // TODO 2 : Create a function that draws a circle  //
-    function drawCircle() {
-        circle = draw.randomCirlceInArea(canvas, true, true, '#999', 2);
-        physikz.addRandomVelocity(circle, canvas);
-        view.addChild(circle);
-        circles.push(circle);
-    }    
+        function drawCircle() {
+            circle = draw.randomCircleInArea(canvas, true, true, '#999', 2);
+            physikz.addRandomVelocity(circle, canvas);
+            view.addChild(circle);
+            circles.push(circle);
+        }    
         // TODO 3 : Call the drawCircle function 5 times //
-        for (var i = 0; i < 5; i++) {
-            drawCircle[i] = 5;
+        for (var i = 0; i < 100; i++) {
+            //drawCircle[i] = 5;
+            drawCircle();
         }
-        // TODO 7 : Create a Loop to call drawCircle 100 times
 
     
         view.addChild(fps);
@@ -48,42 +48,42 @@ var init = function (window) {
                 circle.x = 0;
             } 
             // TODO 5a) if the circle has gone past of the LEFT side of the screen then place it on the RIGHT
-            else if ( / * Fill me in! * / ) {
-                
+            else if (circle.x < 0) {
+                circle.x = canvas.width;
             } 
 
             // TODO 5b) if the circle has gone past of the TOP side of the screen then place it on the BOTTOM
-            if ( / * Fill me in! * / ) {
-                
+            if ( circle.y < 0 ) {
+                circle.y = canvas.height;
             }
             // TODO 5c) if the circle has gone past of the BOTTOM side of the screen then place it OFF-SCREEN TOP
-            else if ( / * Fill me in! * / ) {
-            
+            else if ( circle.y > canvas.height) {
+                    circle.y = 0;
             }
             // YOUR TODO 5 CODE ENDS HERE //////////////////////////
-        }
+        };
     
         function update() {
             // TODO 4 : Update the circle's position //
-           physikz.updatePosition(circles[0]);
-           physikz.updatePosition(circles[1]);
-           physikz.updatePosition(circles[2]);
-           physikz.updatePosition(circles[3]);
-           physikz.updatePosition(circles[4]);
+          
+          
             
             // TODO 5 : Call game.checkCirclePosition on your circles.
-            canvas.width    // The the width of our canvas.
-            canvas.height   // The height of our canvas.
-            circle.x        // The circle's position along the x-axis, good for testing the right and left side borders.
-            circle.y        // The circle's position along the y-axis, good for testing the top and bottom borders.
-            circle.radius   // Each circle is of a different size, so the radius will provide this information to you. 
+            // canvas.width    // The the width of our canvas.
+            // canvas.height   // The height of our canvas.
+            // circle.x        // The circle's position along the x-axis, good for testing the right and left side borders.
+            // circle.y        // The circle's position along the y-axis, good for testing the top and bottom borders.
+            // circle.radius   // Each circle is of a different size, so the radius will provide this information to you. 
 
                 
             
 
             // TODO 8 : Iterate over the array
-           
-
+            for (var i = 0; i < circles.length; i++) {
+                var eachValue = circles[i];
+                physikz.updatePosition(circles[i]);
+                game.checkCirclePosition(circles[i]);
+            }
         }
         
         ////////////////////////////////////////////////////////////////////
